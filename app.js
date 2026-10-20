@@ -105,3 +105,48 @@ document.addEventListener(
 
     }
 );
+/* =========================================
+   التنقل بين صفحات البرنامج
+   ========================================= */
+
+function showPage(pageName) {
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+            page.classList.remove("active");
+        });
+
+    const targetPage = document.getElementById(
+        "page-" + pageName
+    );
+
+    if (targetPage) {
+        targetPage.classList.add("active");
+    }
+
+    document
+        .querySelectorAll("#bottom-nav button")
+        .forEach(button => {
+
+            button.classList.toggle(
+                "active",
+                button.dataset.page === pageName
+            );
+
+        });
+}
+
+
+/* =========================================
+   تشغيل الصفحة الرئيسية
+   ========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        showPage("home");
+
+    }
+);
