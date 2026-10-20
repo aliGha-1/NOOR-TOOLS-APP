@@ -1,0 +1,42 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    direction: rtl;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+#app {
+    min-height: 100vh;
+}
+
+#main-content {
+    min-height: calc(100vh - 120px);
+}
+
+#bottom-nav {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
