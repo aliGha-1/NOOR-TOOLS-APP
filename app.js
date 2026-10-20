@@ -1,13 +1,107 @@
 "use strict";
 
-/*
- * NOOR TOOLS
- * التطبيق الرئيسي
- *
- * سيتم بناء وظائف المشروع هنا تدريجيًا
- * اعتمادًا على الملف المرجعي الذي أرسلته.
- */
+/* =========================================
+   NOOR TOOLS
+   قاعدة البيانات والحفظ المحلي
+   ========================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("NOOR TOOLS - Ready");
-});
+const KEY = "noor_tools_v1";
+
+let db = {
+    products: [],
+    sales: [],
+    purchases: [],
+    settings: {
+        shopName: "نور تولز",
+        lowDefault: 3
+    }
+};
+
+
+/* =========================================
+   تحميل البيانات
+   ========================================= */
+
+function load() {
+
+    try {
+
+        const saved = localStorage.getItem(KEY);
+
+        if (!saved) {
+            return;
+        }
+
+        const data = JSON.parse(saved);
+
+        if (
+            data &&
+            Array.isArray(data.products) &&
+            Array.isArray(data.sales) &&
+            Array.isArray(data.purchases)
+        ) {
+
+            db = {
+                ...db,
+                ...data,
+                settings: {
+                    ...db.settings,
+                    ...(data.settings || {})
+                }
+            };
+
+        }
+
+    } catch (error) {
+
+        console.warn(
+            "تعذر تحميل البيانات المحفوظة",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   حفظ البيانات
+   ========================================= */
+
+function save() {
+
+    try {
+
+        localStorage.setItem(
+            KEY,
+            JSON.stringify(db)
+        );
+
+    } catch (error) {
+
+        console.warn(
+            "تعذر حفظ البيانات",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   بداية التطبيق
+   ========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        load();
+
+        console.log(
+            "NOOR TOOLS جاهز"
+        );
+
+    }
+);
