@@ -1,35 +1,287 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>نور تولز</title>
+    <title>نور تولز | NOOR TOOLS</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- التطبيق بالكامل سيتم بناؤه هنا -->
-    <div id="app">
+<div id="app">
 
-        <!-- الهيدر -->
-        <header id="app-header">
+    <!-- الهيدر -->
+    <header id="app-header">
+        <div class="brand">
             <h1>نور تولز</h1>
-        </header>
+            <span>NOOR TOOLS</span>
+        </div>
+    </header>
 
-        <!-- المحتوى الرئيسي -->
-        <main id="main-content">
-        </main>
 
-        <!-- شريط التنقل السفلي -->
-        <nav id="bottom-nav">
-        </nav>
+    <!-- المحتوى الرئيسي -->
+    <main id="main-content">
+
+        <!-- الرئيسية -->
+        <section class="page" id="page-home">
+
+            <h2>الرئيسية</h2>
+
+            <div id="dashboardStats"></div>
+
+            <div id="quickActions"></div>
+
+            <div id="lowStockSection"></div>
+
+        </section>
+
+
+        <!-- الأقسام -->
+        <section class="page" id="page-categories">
+
+            <h2>🗂️ أقسام نور تولز</h2>
+
+            <div id="categoriesList"></div>
+
+            <div id="categoryProductsWrap">
+                <h3 id="categoryProductsTitle"></h3>
+                <div id="categoryProductsCount"></div>
+                <div id="categoryProductsList"></div>
+            </div>
+
+        </section>
+
+
+        <!-- الأصناف والمخزون -->
+        <section class="page" id="page-products">
+
+            <h2>📦 الأصناف والمخزون</h2>
+
+            <div id="productsCount">0 صنف</div>
+
+            <input
+                id="productSearch"
+                type="search"
+                placeholder="ابحث باسم الصنف أو الكود..."
+            >
+
+            <div id="productsList"></div>
+
+        </section>
+
+
+        <!-- المبيعات -->
+        <section class="page" id="page-sales">
+
+            <h2>🧾 سجل المبيعات</h2>
+
+            <div id="salesSummary"></div>
+
+            <div id="salesList"></div>
+
+        </section>
+
+
+        <!-- المشتريات -->
+        <section class="page" id="page-purchases">
+
+            <h2>🚚 المشتريات</h2>
+
+            <div id="purchasesList"></div>
+
+        </section>
+
+
+        <!-- التقارير -->
+        <section class="page" id="page-reports">
+
+            <h2>📊 التقارير والحسابات</h2>
+
+            <div id="reportsContent">
+
+                <div>
+                    <span>إجمالي المبيعات</span>
+                    <strong id="rSales">0 ج.م</strong>
+                </div>
+
+                <div>
+                    <span>إجمالي المشتريات</span>
+                    <strong id="rPurchases">0 ج.م</strong>
+                </div>
+
+                <div>
+                    <span>الربح التقريبي</span>
+                    <strong id="rProfit">0 ج.م</strong>
+                </div>
+
+                <div>
+                    <span>قيمة المخزون بسعر الشراء</span>
+                    <strong id="rStock">0 ج.م</strong>
+                </div>
+
+                <div>
+                    <span>عدد فواتير البيع</span>
+                    <strong id="rSaleCount">0</strong>
+                </div>
+
+                <div>
+                    <span>عدد فواتير الشراء</span>
+                    <strong id="rPurchaseCount">0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- المزيد والإعدادات -->
+        <section class="page" id="page-more">
+
+            <h2>⚙️ المزيد والإعدادات</h2>
+
+            <section>
+                <h3>نسخ احتياطي واستعادة</h3>
+
+                <button id="backupBtn">
+                    💾 تنزيل نسخة احتياطية
+                </button>
+
+                <label for="restoreFile">
+                    📂 استعادة نسخة احتياطية
+                </label>
+
+                <input
+                    id="restoreFile"
+                    type="file"
+                    accept=".json,application/json"
+                    hidden
+                >
+            </section>
+
+
+            <section>
+                <h3>إعدادات المحل</h3>
+
+                <label for="shopName">
+                    اسم المحل
+                </label>
+
+                <input
+                    id="shopName"
+                    type="text"
+                    value="نور تولز"
+                >
+
+                <label for="lowDefault">
+                    حد تنبيه نقص المخزون الافتراضي
+                </label>
+
+                <input
+                    id="lowDefault"
+                    type="number"
+                    min="0"
+                    value="3"
+                >
+            </section>
+
+
+            <section>
+                <h3>🔐 أمان البرنامج</h3>
+
+                <button id="changePasswordBtn">
+                    تغيير كلمة المرور
+                </button>
+
+                <button id="clearDataBtn">
+                    مسح كل البيانات من هذا الجهاز
+                </button>
+
+            </section>
+
+
+            <section>
+                <h3>عن البرنامج</h3>
+
+                <strong>نور تولز | NOOR TOOLS</strong>
+
+                <p>
+                    برنامج إدارة أصناف ومبيعات ومشتريات محليًا،
+                    مع فواتير متعددة الأصناف.
+                </p>
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- شريط التنقل السفلي -->
+    <nav id="bottom-nav">
+
+        <button data-page="home">
+            <span>⌂</span>
+            الرئيسية
+        </button>
+
+        <button data-page="categories">
+            <span>🗂️</span>
+            الأقسام
+        </button>
+
+        <button data-page="products">
+            <span>📦</span>
+            الأصناف
+        </button>
+
+        <button data-page="sales">
+            <span>🧾</span>
+            المبيعات
+        </button>
+
+        <button data-page="purchases">
+            <span>🚚</span>
+            المشتريات
+        </button>
+
+        <button data-page="more">
+            <span>☰</span>
+            المزيد
+        </button>
+
+    </nav>
+
+
+    <!-- النافذة المنبثقة -->
+    <div id="modalback">
+
+        <div id="modal">
+
+            <div id="modalHead">
+                <h3 id="modalTitle">إضافة</h3>
+
+                <button id="closeModal">
+                    ×
+                </button>
+            </div>
+
+            <div id="modalBody"></div>
+
+        </div>
 
     </div>
 
-    <script src="app.js"></script>
+
+    <!-- رسائل التنبيه -->
+    <div id="toast"></div>
+
+</div>
+
+
+<script src="app.js"></script>
 
 </body>
 </html>
