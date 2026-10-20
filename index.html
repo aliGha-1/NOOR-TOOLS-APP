@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#071827">
+<title>نور تولز | NOOR TOOLS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="authGate" role="dialog" aria-modal="true">
+  <div class="authbox">
+    <div class="authlogo">N</div>
+    <h2>نور تولز</h2>
+    <div class="authen">NOOR TOOLS</div>
+    <p id="authMessage">أدخل كلمة المرور لفتح البرنامج</p>
+    <form id="authForm">
+      <input id="authPassword" class="field" type="password" autocomplete="current-password" required minlength="4" placeholder="كلمة المرور">
+      <input id="authPassword2" class="field" type="password" autocomplete="new-password" minlength="4" placeholder="أعد كتابة كلمة المرور" style="display:none">
+      <button class="btn primary wide" id="authSubmit" type="submit">فتح البرنامج</button>
+      <div id="authError" class="autherror"></div>
+    </form>
+    <div class="authcredit">التصميم والتطوير: <b>م. علي غريب</b><br><b>Eng. Ali Gharib</b> — <b>01559330658</b></div>
+    <div class="authhint">احتفظ بكلمة المرور؛ لا يمكن استعادتها إذا نسيتها.</div>
+  </div>
+</div>
+<div class="app">
+<header class="top">
+ <div class="toprow"><div class="brand"><div class="logo">N</div><div><h1>نور تولز</h1><div class="enbrand">NOOR TOOLS</div><p>إدارة محلك بذكاء • بدون إنترنت</p></div></div><div class="pill">● يعمل محليًا</div></div>
+ <div class="welcome"><div class="bismillah">بسم الله الرحمن الرحيم</div><h2 id="greeting">مرحبًا بك في نور تولز 👋</h2><p id="todayText">كل تفاصيل محلك في مكان واحد</p><div class="tagline">كل ما تحتاجه في مكان واحد</div></div>
+</header>
+<main class="content">
+<section class="page active" id="page-home">
+<div class="stats"><div class="stat"><div class="icon">📦</div><div class="label">عدد الأصناف</div><div class="value" id="statProducts">0</div><div class="hint">صنف مسجل</div></div><div class="stat"><div class="icon">💵</div><div class="label">مبيعات اليوم</div><div class="value" id="statSales">0 ج.م</div><div class="hint">إجمالي فواتير اليوم</div></div><div class="stat"><div class="icon">📈</div><div class="label">ربح اليوم التقريبي</div><div class="value green" id="statProfit">0 ج.م</div><div class="hint">قبل المصروفات</div></div><div class="stat"><div class="icon">⚠️</div><div class="label">أصناف قاربت تخلص</div><div class="value red" id="statLow">0</div><div class="hint">راجع المخزون</div></div></div>
+<div class="sectionhead"><div><h3>اختصارات سريعة</h3><div class="sub">أنجز شغلك من ضغطة واحدة</div></div></div><div class="quick"><button onclick="openProduct()"><span>➕</span><b>إضافة صنف</b><small>سجّل بضاعة جديدة</small></button><button onclick="openSale()"><span>🧾</span><b>فاتورة بيع</b><small>أكثر من صنف في فاتورة واحدة</small></button><button onclick="openPurchase()"><span>🚚</span><b>فاتورة شراء</b><small>زوّد المخزون</small></button><button onclick="showPage('reports')"><span>📊</span><b>التقارير</b><small>راجع حساباتك</small></button></div>
+<div class="sectionhead"><div><h3>تنبيهات المخزون</h3><div class="sub">الأصناف التي وصلت للحد الأدنى</div></div><button class="btn soft" onclick="showPage('products')">كل الأصناف ←</button></div><div class="panel"><div id="lowList" class="list"></div></div><div class="notice">💡 بياناتك محفوظة على هذا الجهاز. اعمل نسخة احتياطية بانتظام من صفحة «المزيد»، ولا تمسح بيانات المتصفح قبل التصدير.</div>
+</section>
+<section class="page" id="page-categories"><div class="sectionhead"><div><h3>🗂️ أقسام نور تولز</h3><div class="sub">اختار القسم الرئيسي ثم القسم الفرعي لعرض البضاعة</div></div><button class="btn primary" onclick="manageCategories()">＋ إدارة الأقسام</button></div><div id="categoriesList" class="categorygrid"></div><div id="categoryProductsWrap" style="display:none"><div class="sectionhead"><div><h3 id="categoryProductsTitle">أصناف القسم</h3><div class="sub" id="categoryProductsCount"></div></div><button class="btn soft" onclick="renderCategories()">كل الأقسام</button></div><div id="categoryProductsList" class="list"></div></div></section>
+<section class="page" id="page-products"><div class="sectionhead"><div><h3>📦 الأصناف والمخزون</h3><div class="sub" id="productsCount">0 صنف</div></div><button class="btn primary" onclick="openProduct()">＋ إضافة</button></div><div class="searchrow"><input id="productSearch" class="field" placeholder="ابحث باسم الصنف أو الكود..." oninput="renderProducts()"></div><div id="productsList" class="list"></div></section>
+<section class="page" id="page-sales"><div class="sectionhead"><div><h3>🧾 سجل المبيعات</h3><div class="sub">فواتير البيع المسجلة</div></div><button class="btn primary" onclick="openSale()">＋ بيع جديد</button></div><div id="salesSummary" class="panel" style="margin-bottom:12px"></div><div id="salesList" class="list"></div></section>
+<section class="page" id="page-purchases"><div class="sectionhead"><div><h3>🚚 المشتريات</h3><div class="sub">تسجيل البضاعة الواردة</div></div><button class="btn primary" onclick="openPurchase()">＋ شراء جديد</button></div><div id="purchasesList" class="list"></div></section>
+<section class="page" id="page-reports"><div class="sectionhead"><div><h3>📊 التقارير والحسابات</h3><div class="sub">ملخص حركة المحل</div></div></div><div class="panel"><h3 style="margin:0 0 13px">ملخص عام</h3><div class="reportgrid"><div class="reportbox"><small>إجمالي المبيعات</small><strong id="rSales">0 ج.م</strong></div><div class="reportbox"><small>إجمالي المشتريات</small><strong id="rPurchases">0 ج.م</strong></div><div class="reportbox"><small>الربح التقريبي</small><strong id="rProfit" class="green">0 ج.م</strong></div><div class="reportbox"><small>قيمة المخزون بسعر الشراء</small><strong id="rStock">0 ج.م</strong></div><div class="reportbox"><small>عدد فواتير البيع</small><strong id="rSaleCount">0</strong></div><div class="reportbox"><small>عدد فواتير الشراء</small><strong id="rPurchaseCount">0</strong></div></div><div class="divider"></div><button class="btn darkbtn wide" onclick="exportCSV()">⬇ تصدير الأصناف CSV</button></div><div class="notice">الربح المعروض تقديري: (سعر البيع − سعر الشراء) × الكمية المباعة. لا يشمل الإيجار أو المصروفات أو الضرائب.</div></section>
+<section class="page" id="page-more"><div class="sectionhead"><div><h3>⚙️ المزيد والإعدادات</h3><div class="sub">إدارة بياناتك بأمان</div></div></div><div class="panel"><h3 style="margin-top:0">نسخ احتياطي واستعادة</h3><p class="sub">صدّر بياناتك إلى ملف JSON واحتفظ به في مكان آمن. يمكنك استعادته لاحقًا على نفس الجهاز أو جهاز آخر.</p><button class="btn darkbtn wide" onclick="backupData()">💾 تنزيل نسخة احتياطية</button><div style="height:9px"></div><label class="btn soft wide" for="restoreFile">📂 استعادة نسخة احتياطية</label><input id="restoreFile" type="file" accept=".json,application/json" hidden onchange="restoreData(event)"><div class="divider"></div><h3>إعدادات المحل</h3><div class="formgroup"><label>اسم المحل</label><input id="shopName" class="field" value="نور تولز" onchange="saveShopName()"></div><div class="formgroup" style="margin-top:10px"><label>حد تنبيه نقص المخزون الافتراضي</label><input id="lowDefault" class="field" type="number" min="0" value="3" onchange="saveLowDefault()"></div><div class="divider"></div><h3>🔐 أمان البرنامج</h3><p class="sub">سيطلب البرنامج كلمة المرور عند فتح جلسة جديدة. تغيير كلمة المرور لا يمسح بياناتك.</p><button class="btn soft wide" onclick="changePassword()">تغيير كلمة المرور</button><div style="height:9px"></div><button class="btn danger wide" onclick="clearAll()">مسح كل البيانات من هذا الجهاز</button><p class="tiny">لا تضغط مسح البيانات إلا إذا كنت متأكدًا وعندك نسخة احتياطية.</p></div><div class="sectionhead"><div><h3>عن البرنامج</h3></div></div><div class="panel"><b>نور تولز | NOOR TOOLS</b><p class="sub">برنامج إدارة أصناف ومبيعات ومشتريات محليًا، مع فواتير متعددة الأصناف. لا يحتاج إنترنت أثناء الاستخدام بعد حفظ الملف على جهازك.</p><div class="brand-credit">التصميم والتطوير: <b>م. علي غريب</b> — <b>01559330658</b><br>لست صاحب المحل؛ هذه حقوق التصميم والتطوير فقط.</div><div class="tiny" style="margin-top:10px">الإصدار 2.0 • البيانات لا تُرسل إلى خادم.</div></div></section>
+</main>
+<nav class="bottomnav"><div class="navinner"><button class="navbtn active" data-page="home" onclick="showPage('home')"><span>⌂</span>الرئيسية</button><button class="navbtn" data-page="categories" onclick="showPage('categories')"><span>🗂️</span>الأقسام</button><button class="navbtn" data-page="products" onclick="showPage('products')"><span>📦</span>الأصناف</button><button class="navbtn" data-page="sales" onclick="showPage('sales')"><span>🧾</span>المبيعات</button><button class="navbtn" data-page="purchases" onclick="showPage('purchases')"><span>🚚</span>المشتريات</button><button class="navbtn" data-page="more" onclick="showPage('more')"><span>☰</span>المزيد</button></div></nav>
+</div>
+<div class="modalback" id="modalback" onclick="if(event.target===this)closeModal()"><div class="modal"><div class="modalhead"><h3 id="modalTitle">إضافة</h3><button class="x" onclick="closeModal()">×</button></div><div id="modalBody"></div></div></div><div class="toast" id="toast"></div>
+<script src="app.js" defer></script>
+</body>
+</html>
